@@ -8,8 +8,12 @@ from resources.user import UserRegister
 from resources.item import Item, ItemsList
 from resources.store import Store, StoreList
 
+
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI', 'sqlite:///mydata.db')
+
+db_url = os.environ.get('DATABASE_URL')
+
+app.config['SQLALCHEMY_DATABASE_URI'] = db_url.replace("://", "ql://", 1)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']= False
 app.secret_key = 'palash'   
 api= Api(app)
