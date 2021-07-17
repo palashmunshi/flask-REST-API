@@ -14,6 +14,7 @@ app = Flask(__name__)
 db_url = os.environ.get('DATABASE_URL')
 
 app.config['SQLALCHEMY_DATABASE_URI'] = db_url.replace("://", "ql://", 1)
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///mydata.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']= False
 app.secret_key = 'palash'   
 api= Api(app)
