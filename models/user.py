@@ -34,6 +34,17 @@ class UsersModel(db.Model):
         # connetion.close()
         # return user
 
+    def json(self):
+        return {
+            'id': self.id,
+            'username': self.username
+        }
+
+
+    def delete_from_db(self):
+        db.session.delete(self)
+        db.session.commit()
+
     def save_to_db(self):
         db.session.add(self)
         db.session.commit()
