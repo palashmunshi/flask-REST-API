@@ -1,4 +1,4 @@
- from models.user import UsersModel
+from models.user import UsersModel
 import sqlite3
 from sqlite3.dbapi2 import Cursor
 from flask_restful import Resource, reqparse
