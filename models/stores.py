@@ -14,7 +14,10 @@ class StoreModel(db.Model):
           
 
     def json(self):
-        return {'name': self.name, 'items': [item.json() for item in self.items.all()]} #whenever this method is called only then it will create each item in the store as an object.
+        return {'id': self.id, 
+        'name': self.name, 
+        'items': [item.json() for item in self.items.all()]
+        } #whenever this method is called only then it will create each item in the store as an object.
 
 
     @classmethod
@@ -30,3 +33,8 @@ class StoreModel(db.Model):
     def delete_from_db(self):
         db.session.delete(self)
         db.session.commit()
+
+
+    @classmethod
+    def find_all(cls):
+        return cls.query.all()

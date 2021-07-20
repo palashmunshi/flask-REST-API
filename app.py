@@ -16,6 +16,7 @@ db_url = os.environ.get('DATABASE_URL')
 app.config['SQLALCHEMY_DATABASE_URI'] = db_url.replace("://", "ql://", 1)
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///mydata.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']= False
+app.config['PROPAGATE_EXCEPTIONS']=  True  #this will allow flask extensions to retrun error. without this it will return 500 error code just saying internal server error....very annoying.
 app.secret_key = 'palash'   
 api= Api(app)
 
